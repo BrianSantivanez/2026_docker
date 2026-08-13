@@ -11,5 +11,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+
+  bd_pgadmin:
+    container_name: bd_pgadmin
+    image: dpage/pgadmin4
+    depends_on:
+      - bd_postgres
+    ports:
+      - "9999:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@mail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+
 volumes:
   postgres_data:
