@@ -1,25 +1,15 @@
 services:
-  bd_mysql:
-    container_name: bd_mysql
-    image: mysql:8.4
+  bd_postgres:
+    container_name: bd_postgres
+    image: postgres:16-alpine
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: bd_base
-      MYSQL_PASSWORD: userpassword
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: mi_base_de_datos
     ports:
-      - "3308:3306"
+      - "5401:5432"
     volumes:
-      - ./mysql:/var/lib/mysql
-  
-  bd_phpmyadmin:
-    container_name: bd_phpmyadmin
-    image: phpmyadmin/phpmyadmin
-    depends_on:
-      - bd_mysql
-    ports:
-      - 8888:80
-    environment:
-      PMA_HOST: bd_mysql
-      PMA_PORT: 3306
-      PMA_USER: root
-      PMA_PASSWORD: root
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

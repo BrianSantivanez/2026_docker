@@ -1,9 +1,9 @@
 # 2026_docker
 
 Create:
-- One Mysql container
+- One Postgres container
 - One phpMyAdmin container
-- One volume in the root directory
+- One volume in the default directory
 
 ## Commands
 ```
